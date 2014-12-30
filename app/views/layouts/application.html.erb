@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blogger</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<p class="flash"><%= flash.notice %></p>
-<%= yield %>
+  <head>
+    <title>Blogger</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="sidebar">
+    <div class="sidebutton"><%= link_to "Articles", articles_path %></div>
+    <p class="sidebutton"><%= link_to "Tags", tags_path %></p>
+    </div>
 
-</body>
-<div style =  "margin-top: 2cm">
-      <h6>
-        <% if logged_in? %>
-          <%= "Logged in as #{current_user.email}" %>
-          <%= link_to "(logout)", logout_path %>
-        <% else %>
-          <%= link_to "(login)", login_path %>
-        <% end %>
-      </h6>
-  </div>
+    <div class="container">
+
+    <p class="flash"><%= flash.notice %></p>
+    <%= yield %>
+
+  </body>
+  <div style =  "margin-top: 2cm">
+        <h6>
+          <% if logged_in? %>
+            <%= "Logged in as #{current_user.email}" %>
+            <%= link_to "(logout)", logout_path %>
+          <% else %>
+            <%= link_to "(login)", login_path %>
+          <% end %>
+        </h6>
+    </div>
 </html>
